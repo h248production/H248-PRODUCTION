@@ -1,209 +1,230 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frame - Cho thuê thiết bị quay phim</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background: #e9ebee;
-            margin: 0;
-            color: #222;
-        }
-        .header {
-            background: #23272b;
-            color: #fff;
-            padding: 36px 0 18px 0;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.7em;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-        .header p {
-            margin: 10px 0 0 0;
-            font-size: 1.15em;
-            color: #bfc7d5;
-        }
-        .container {
-            max-width: 950px;
-            margin: 36px auto;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-            padding: 36px 28px 32px 28px;
-        }
-        .container > h2 {
-            color: #23272b;
-            font-size: 1.4em;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
-        }
-        .device-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-        .device {
-            flex: 1 1 260px;
-            background: #f7f8fa;
-            border-radius: 10px;
-            padding: 22px 18px 18px 18px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: box-shadow 0.2s, transform 0.2s;
-            border: 1px solid #e3e6ea;
-        }
-        .device:hover {
-            box-shadow: 0 8px 24px rgba(45,108,223,0.10);
-            transform: translateY(-2px) scale(1.02);
-            border-color: #b3c6f7;
-        }
-        .device h2 {
-            font-size: 1.13em;
-            margin: 0 0 8px 0;
-            color: #2d6cdf;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .device .price {
-            font-weight: bold;
-            color: #e67e22;
-            margin-bottom: 6px;
-            font-size: 1.08em;
-        }
-        .device .accessory {
-            font-size: 0.97em;
-            color: #555;
-            margin-bottom: 4px;
-        }
-        .footer {
-            background: #23272b;
-            color: #fff;
-            text-align: center;
-            padding: 28px 0 10px 0;
-            margin-top: 44px;
-            font-size: 1.05em;
-        }
-        .contact, .social {
-            margin: 14px 0;
-        }
-        .contact a, .social a {
-            color: #fff;
-            text-decoration: underline;
-            margin: 0 8px;
-            transition: color 0.2s;
-        }
-        .contact a:hover, .social a:hover {
-            color: #2d6cdf;
-        }
-        @media (max-width: 700px) {
-            .container { padding: 10px; }
-            .device-list { flex-direction: column; }
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Thiết bị cho thuê</title>
+	<script src="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/icons-react/dist/index.umd.min.js"></script>
+	<style>
+		.contact-icon {
+			stroke-width: 1.5;
+			width: 20px;
+			height: 20px;
+			vertical-align: middle;
+			margin-right: 8px;
+		}
+		* {
+			font-family: 'Courier', monospace !important;
+		}
+		body {
+			background: #000000;
+			margin: 0;
+			color: #000;
+		}
+		.container {
+			max-width: 900px;
+			margin: 32px auto;
+			background: #111;
+			border-radius: 8px;
+			box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+			padding: 24px 12px;
+		}
+		h1 {
+			text-align: center;
+			color: #000;
+			font-size: 2em;
+			margin-bottom: 24px;
+		}
+		   .device-list {
+			   display: flex;
+			   flex-wrap: wrap;
+			   gap: 18px;
+			   justify-content: center;
+		   }
+		   .device {
+			   background: #2a2a2a;
+			   border-radius: 12px;
+			   box-shadow: 0 2px 12px rgba(255,255,255,0.07);
+			   padding: 10px 12px;
+			   margin: 8px;
+			   display: flex;
+			   flex-direction: row;
+			   align-items: center;
+			   min-width: 260px;
+			   max-width: 370px;
+			   width: 100%;
+			   transition: box-shadow 0.2s;
+		   }
+		   .device-img {
+			   width: 90px;
+			   height: 70px;
+			   background: #e9ecf3;
+			   border-radius: 5px;
+			   margin-bottom: 0;
+			   margin-right: 16px;
+			   display: flex;
+			   align-items: center;
+			   justify-content: center;
+			   flex-shrink: 0;
+		   }
+		   .device-img img {
+			   width: 90px;
+			   height: 70px;
+			   object-fit: cover;
+			   border-radius: 5px;
+		   }
+		   .device-info {
+			   display: flex;
+			   flex-direction: column;
+			   align-items: flex-start;
+			   flex: 1;
+		   }
+		.device-title {
+			font-size: 1em;
+			font-weight: bold;
+			color: #fff;
+			margin: 0 0 6px 0;
+			text-align: left;
+		}
+		.device-price {
+			font-size: 0.98em;
+			color: #fff;
+			font-weight: bold;
+			margin-bottom: 4px;
+		}
+		.device-accessory {
+			font-size: 0.93em;
+			color: #ddd;
+			margin-bottom: 0;
+			text-align: left;
+		}
+		@media (max-width: 700px) {
+			.container { padding: 6px; }
+			.device-list { flex-direction: column; align-items: center; }
+			.device { width: 100%; max-width: 320px; }
+		}
+	</style>
 </head>
 <body>
-    <div class="header">
-        <h1>Frame</h1>
-        <p>Perfect in every single frame</p>
-        <p>Cung cấp thiết bị sản xuất video chuyên nghiệp: máy ảnh, máy quay, ống kính, gimbal, chân máy, đèn, mic thu âm,...</p>
-    </div>
-    <div class="container">
-        <h2>Danh sách thiết bị cho thuê</h2>
-        <div class="device-list">
-            <div class="device" data-img="sony-a7m4.jpg">
-                <div class="device-img"></div>
-                <h2>Sony Alpha A7 Mark IV</h2>
-                <div class="price">500.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: 2 x pin FZ100, 1 x Thẻ nhớ 64G</div>
-            </div>
-            <div class="device" data-img="sony-a7m3.jpg">
-                <div class="device-img"></div>
-                <h2>Sony Alpha A7 Mark III</h2>
-                <div class="price">350.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: 2 x pin FZ100, 1 x Thẻ nhớ 64G</div>
-            </div>
-            <div class="device" data-img="sony-fx30.jpg">
-                <div class="device-img"></div>
-                <h2>Máy quay Cinema Sony FX30 (liên hệ)</h2>
-                <div class="price">600.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: 2 x pin FZ100, 1 x Thẻ nhớ 64G</div>
-            </div>
-            <div class="device" data-img="sony-24-70gm.jpg">
-                <div class="device-img"></div>
-                <h2>Lens Sony FE 24-70mm GM F2.8</h2>
-                <div class="price">300.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: Filter chống bụi</div>
-            </div>
-            <div class="device" data-img="dji-mini3.jpg">
-                <div class="device-img"></div>
-                <h2>Flycam DJI Mini 3 Pro Combo</h2>
-                <div class="price">500.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: 3 x pin, 1 x Thẻ nhớ 64G</div>
-            </div>
-            <div class="device" data-img="ronin-s4.jpg">
-                <div class="device-img"></div>
-                <h2>Gimbal DJI Ronin S4</h2>
-                <div class="price">350.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: Cable type C</div>
-            </div>
-            <div class="device" data-img="nanlite-60b.jpg">
-                <div class="device-img"></div>
-                <h2>Đèn Led NANlite Forza 60B Bi Color</h2>
-                <div class="price">250.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: 1 x Chân đèn</div>
-            </div>
-            <div class="device" data-img="rode-go2.jpg">
-                <div class="device-img"></div>
-                <h2>Microphone Rode Wireless Go II</h2>
-                <div class="price">300.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: 2 x TX, 1 x RX, Cable SC2</div>
-            </div>
-            <div class="device" data-img="ninja-v.jpg">
-                <div class="device-img"></div>
-                <h2>Monitor Ninja V (ngừng cung cấp)</h2>
-                <div class="price">350.000 VNĐ/ngày</div>
-                <div class="accessory">Phụ kiện: Nguồn, 2 x Pin F970</div>
-            </div>
-            <!-- Thêm các thiết bị khác tương tự ở đây -->
-        </div>
-    </div>
-    <div class="footer">
-        <div class="contact">
-            <strong>LIÊN HỆ:</strong><br>
-            <span>Nhà 110 khu tập thể Văn Nghệ Sỹ (tập thể Bộ Văn Hóa), P.Kim Mã, Q.Ba Đình, TP.Hà Nội</span><br>
-            <a href="tel:0325417624">0325.417.624</a> | <a href="tel:0967404932">0967.404.932</a>
-        </div>
-        <div class="social">
-            <strong>MẠNG XÃ HỘI:</strong><br>
-            <a href="https://www.facebook.com/frameprodvn/" target="_blank">Facebook</a> |
-            <a href="https://www.instagram.com/frameprodvn/" target="_blank">Instagram</a> |
-            <a href="mailto:frameprodvn@gmail.com">Email</a>
-        </div>
-        <div style="margin-top: 12px; font-size: 0.95em;">© 2021 · Bản quyền thuộc về <a href="https://www.facebook.com/frameprodvn/" style="color:#fff;">Frame</a></div>
-    </div>
+	<header style="padding: 20px 0; background: #111; box-shadow: 0 4px 18px rgba(0,0,0,0.10); margin-bottom: 18px;">
+		<div style="max-width: 900px; margin: 0 auto;">
+			<div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0 20px;">
+				<img src="LOGO/1x/FWPNG.png" alt="FWPNG Logo" style="height: 140px; margin-right: 24px; display: block;">
+				<div style="color: #fff;">
+					<div style="margin-bottom: 8px;">
+						<svg xmlns="http://www.w3.org/2000/svg" class="contact-icon" style="stroke: #fff;" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+						</svg>
+						<a href="tel:0395413371" style="color: #fff; text-decoration: none;">0395413371</a>
+					</div>
+					<div style="margin-bottom: 8px;">
+						<svg xmlns="http://www.w3.org/2000/svg" class="contact-icon" style="stroke: #fff;" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<rect x="3" y="5" width="18" height="14" rx="2" />
+							<polyline points="3 7 12 13 21 7" />
+						</svg>
+						<a href="mailto:h248production@gmail.com" style="color: #fff; text-decoration: none;">h248production@gmail.com
+                        </a>
+					</div>
+					<div style="margin-bottom: 8px;">
+						<svg xmlns="http://www.w3.org/2000/svg" class="contact-icon" style="stroke: #fff;" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<circle cx="12" cy="12" r="9" />
+							<polyline points="12 7 12 12 15 15" />
+						</svg>
+						8:00 - 18:00
+					</div>
+					<div>
+						<svg xmlns="http://www.w3.org/2000/svg" class="contact-icon" style="stroke: #fff;" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<circle cx="12" cy="11" r="3" />
+							<path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+						</svg>
+						Ngách 82/122, ngõ 166 Kim Mã, Ba Đình, Hà Nội
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="container">
+		<div class="device-list">
+			   <div class="device">
+				   <div class="device-img"><img src="328C79CF-047A-4029-8839-FA5AF6F80723.jpeg" alt="Sony Alpha A7 Mark IV"></div>
+				   <div class="device-info">
+					   <div class="device-title">Sony Alpha A7 Mark IV</div>
+					   <div class="device-price">500.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: 2 x pin FZ100, 1 x Thẻ nhớ 64G</div>
+				   </div>
+			   </div>
+			   <div class="device">
+				   <div class="device-img"><img src="CE881EEA-6E8E-46EC-AC38-2D5ABA394858.jpeg" alt="Sony Alpha A7 Mark III"></div>
+				   <div class="device-info">
+					   <div class="device-title">Sony Alpha A7 Mark III</div>
+					   <div class="device-price">350.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: 2 x pin FZ100, 1 x Thẻ nhớ 64G</div>
+				   </div>
+			   </div>
+			   <div class="device">
+				   <div class="device-img"><img src="DSC04261.JPG" alt="Sony FX30"></div>
+				   <div class="device-info">
+					   <div class="device-title">Máy quay Cinema Sony FX30</div>
+					   <div class="device-price">600.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: 2 x pin FZ100, 1 x Thẻ nhớ 64G</div>
+				   </div>
+			   </div>
+			   <div class="device">
+				   <div class="device-img"><img src="328C79CF-047A-4029-8839-FA5AF6F80723.jpeg" alt="Sony FE 24-70mm GM F2.8"></div>
+				   <div class="device-info">
+					   <div class="device-title">Lens Sony FE 24-70mm GM F2.8</div>
+					   <div class="device-price">300.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: Filter chống bụi</div>
+				   </div>
+			   </div>
+			   <div class="device">
+				   <div class="device-img"><img src="CE881EEA-6E8E-46EC-AC38-2D5ABA394858.jpeg" alt="Flycam DJI Mini 3 Pro Combo"></div>
+				   <div class="device-info">
+					   <div class="device-title">Flycam DJI Mini 3 Pro Combo</div>
+					   <div class="device-price">500.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: 3 x pin, 1 x Thẻ nhớ 64G</div>
+				   </div>
+			   </div>
+			   <div class="device">
+				   <div class="device-img"><img src="DSC04261.JPG" alt="Gimbal DJI Ronin S4"></div>
+				   <div class="device-info">
+					   <div class="device-title">Gimbal DJI Ronin S4</div>
+					   <div class="device-price">350.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: Cable type C</div>
+				   </div>
+			   </div>
+			   <div class="device">
+				   <div class="device-img"><img src="328C79CF-047A-4029-8839-FA5AF6F80723.jpeg" alt="Đèn Led NANlite Forza 60B Bi Color"></div>
+				   <div class="device-info">
+					   <div class="device-title">Đèn Led NANlite Forza 60B Bi Color</div>
+					   <div class="device-price">250.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: 1 x Chân đèn</div>
+				   </div>
+			   </div>
+			   <div class="device">
+				   <div class="device-img"><img src="CE881EEA-6E8E-46EC-AC38-2D5ABA394858.jpeg" alt="Microphone Rode Wireless Go II"></div>
+				   <div class="device-info">
+					   <div class="device-title">Microphone Rode Wireless Go II</div>
+					   <div class="device-price">300.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: 2 x TX, 1 x RX, Cable SC2</div>
+				   </div>
+			   </div>
+			   <div class="device">
+				   <div class="device-img"><img src="DSC04261.JPG" alt="Monitor Ninja V"></div>
+				   <div class="device-info">
+					   <div class="device-title">Monitor Ninja V (ngừng cung cấp)</div>
+					   <div class="device-price">350.000 VNĐ/ngày</div>
+					   <div class="device-accessory">Phụ kiện: Nguồn, 2 x Pin F970</div>
+				   </div>
+			   </div>
+		</div>
+	</div>
+	<footer style="margin-top: 32px; background: #111; color: #fff; text-align: center; padding: 18px 0 12px 0; font-size: 1em;">
+		© 2025 · H248 Equipment Rental | Hotline: 0395413371
+	</footer>
 </body>
-<script>
-// Hàm tự động chèn ảnh vào từng thiết bị dựa vào thuộc tính data-img
-document.querySelectorAll('.device').forEach(function(device) {
-    var imgName = device.getAttribute('data-img');
-    var imgDiv = device.querySelector('.device-img');
-    if (imgName && imgDiv) {
-        imgDiv.innerHTML = '<img src="images/' + imgName + '" alt="Ảnh thiết bị" style="width:100%;max-width:160px;display:block;margin:0 auto 12px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.10);background:#fff;object-fit:cover;">';
-    }
-});
-</script>
-        .device-img {
-            min-height: 110px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 </html>
